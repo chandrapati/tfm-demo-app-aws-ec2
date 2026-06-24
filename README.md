@@ -1,4 +1,7 @@
 # AWS Infrastructure
+
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=chandrapati.tfm-demo-app-aws-ec2&left_text=visitors)
+
 ![alt text](https://raw.githubusercontent.com/amansin0504/tfm-demo-app-aws-ec2/main/images/architecture-diagram.png)
 
 # Deploy Architecture
