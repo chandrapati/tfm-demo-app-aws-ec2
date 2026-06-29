@@ -10,7 +10,14 @@ resource "aws_flow_log" "cswflowlogs" {
   log_destination_type = "s3"
   traffic_type         = "ALL"
   vpc_id               = aws_vpc.safe-vpc-network.id
-  log_format = "$${account-id} $${action} $${bytes} $${dstaddr} $${dstport} $${end} $${instance-id} $${interface-id} $${log-status} $${packets} $${pkt-dstaddr} $${pkt-srcaddr} $${protocol} $${srcaddr} $${srcport} $${start} $${subnet-id} $${tcp-flags} $${type} $${version} $${vpc-id} $${flow-direction}"
+  log_format           = "$${version} $${srcaddr} $${dstaddr} $${srcport} $${dstport} $${protocol} $${packets} $${bytes} $${start} $${end} $${action} $${tcp-flags} $${interface-id} $${log-status} $${flow-direction} $${pkt-srcaddr} $${pkt-dstaddr}"
+  max_aggregation_interval = 60
+
+  destination_options {
+    file_format                = "plain-text"
+    hive_compatible_partitions = false
+    per_hour_partition         = true
+  }
 }
 
 #Create subnets in VPC network
